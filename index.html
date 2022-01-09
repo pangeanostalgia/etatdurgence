@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Etat d'urgence au Québec</title>
+</head>
+<body>
+  <div id="mainText">
+    </div>
+  <script type="text/javascript">
+
+    const debutUrgence = Date.UTC(2020,03,13,20)
+    var today = new Date()
+    var utc1 = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate(),
+                        today.getHours(), today.getMinutes(), today.getSeconds());
+    var elapsed = utc1 - debutUrgence
+    const msPerDay = 1000 * 60 * 60 * 24
+
+    var daysElapsed = Math.floor(elapsed/msPerDay)
+    var remainder = elapsed - daysElapsed * msPerDay
+    var hoursElapsed = Math.floor(remainder / (msPerDay/24))
+    remainder = remainder - hoursElapsed * (msPerDay/24)
+    var minutesElapsed = Math.floor(remainder / (60*1000))
+    remainder = remainder - (minutesElapsed * 60 * 1000)
+    var secondsElapsed = remainder / 1000
+    var Daniel =   "L'etat d'urgence est en vigueur au Quebec depuis " + daysElapsed + //
+                " jours " + hoursElapsed + " heures et " + minutesElapsed + //
+                " minutes et " + secondsElapsed + " secondes."
+    document.getElementById('mainText').innerHTML = Daniel
+
+
+  </script>
+</body>
+
+</html>
